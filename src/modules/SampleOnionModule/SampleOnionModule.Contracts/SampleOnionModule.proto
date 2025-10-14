@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package sampleonion;
+
+option csharp_namespace = "ThermoFisher.SampleOnionModule.Contracts";
+
+service SampleOnionService {
+  rpc GetCompounds(GetCompoundsRequest) returns (GetCompoundsResponse);
+}
+
+message Compound {
+  string name = 1;
+  string formula = 2;
+  double retention_time = 3;
+  double peak_area = 4;
+  double concentration = 5;
+}
+
+message GetCompoundsRequest {}
+
+// Response containing a list of compounds.
+message GetCompoundsResponse {
+  repeated Compound compounds = 1;
+}
+

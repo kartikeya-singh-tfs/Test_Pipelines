@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>ThermoFisher.SampleOnionModule.Grpc</AssemblyName>
+    <RootNamespace>ThermoFisher.SampleOnionModule.Grpc</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.66.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleOnionModule.Contracts\SampleOnionModule.Contracts.csproj" />
+    <ProjectReference Include="..\SampleOnionModule.Abstractions\SampleOnionModule.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

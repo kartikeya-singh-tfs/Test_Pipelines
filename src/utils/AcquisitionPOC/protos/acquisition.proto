@@ -1,0 +1,195 @@
+// Copyright 2015; Google Inc.
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms; with or without
+// modification; are permitted provided that the following conditions are
+// met:
+//
+//     * Redistributions of source code must retain the above copyright
+// notice; this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above
+// copyright notice; this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+//     * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES; INCLUDING; BUT NOT
+// LIMITED TO; THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT; INDIRECT; INCIDENTAL;
+// SPECIAL; EXEMPLARY; OR CONSEQUENTIAL DAMAGES (INCLUDING; BUT NOT
+// LIMITED TO; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE;
+// DATA; OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY; WHETHER IN CONTRACT; STRICT LIABILITY; OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE; EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+syntax = "proto3";
+
+package ThermoFisher.Opal.Acquisition;
+
+option csharp_namespace = "ThermoFisher.Opal.Acquisition";
+
+// The greeting service definition.
+service Acquisition {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHelloServerStream (HelloRequest) returns (stream HelloReplyStream) {}
+  rpc SayHelloClientStream (stream HelloRequestStream) returns (HelloReply) {}
+  rpc SayHelloStream (stream HelloRequestStream) returns (stream HelloReplyStream) {}
+
+  rpc SubmitSampleStream (EmptyRequest) returns (stream SequenceReplyStream) {}
+  rpc SequenceStateEvent(SequenceEvent) returns (EmptyResponse) {}
+  rpc AcquisitionStateEvent(AcquisitionEvent) returns (EmptyResponse) {}
+  rpc DeviceStateEvent(DeviceEvent) returns (EmptyResponse) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+// The request message containing the user's name.
+message HelloRequestStream {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReplyStream {
+  string message = 1;
+}
+
+message EmptyRequest {
+}
+
+message EmptyResponse {
+}
+
+message SequenceReplyStream {
+  string id = 1;
+  repeated SampleReply samples = 2;
+}
+
+message SampleReply {
+  string id = 1;
+  string sampleName = 2;
+  string methodFilePath = 3;
+  string rawFilePath = 4;
+}
+
+enum AcquisitionState {
+    Stopped = 0;
+    Error = 1;
+    Load = 2;
+    Initialize = 3;
+    WaitInitialize = 4;
+    WaitReady = 5;
+    Ready = 6;
+    ReadBarcode = 7;
+    WaitBarcode = 8;
+    WaitBarcodeError = 9;
+    SendMethod = 10;
+    WaitMethodReady = 11;
+    PreAcquisitionProgram = 12;
+    WaitPreAcquisitionProgram = 13;
+    WaitStartSlaves = 14;
+    WaitStartMaster = 15;
+    WaitContactClosure = 16;
+    Acquire = 17;
+    WaitMethodRun = 18;
+    PostAcquisitionProgram = 19;
+    WaitPostAcquisitionProgram = 20;
+    PostRun = 21;
+    Abort = 22;
+}
+
+enum SequenceState {
+    SequenceStart = 0;
+    SequenceComplete = 1;
+    SampleStart = 2;
+    DataFileCreate = 3;
+    SampleComplete = 4;
+    InvalidDeviceList = 5;
+    DeviceError = 6;
+    BarcodeError = 7;
+    MethodValidationFail = 8;
+    MethodValidationOk = 9;
+    InvalidVial = 10;
+    InvalidInjectionVolume = 11;
+    DataFileCreateFail = 12;
+    MethodDownloadFail = 13;
+    PreAcquisitionProgramRunFail = 14;
+    PostAcquisitionProgramRunFail = 15;
+    MethodStoreFail = 16;
+    ChangeOperatingModeFail = 17;
+    DeviceInitializeFail = 18;
+    SequenceCompletedFilesMoved = 19;
+    SequencePausedFilesMoved = 20;
+    DiskSpaceLow = 21;
+    InstrumentSentMessage = 22;
+    StartRunFail = 23;
+    StopRunFail = 24;
+    DeviceDetached = 25;
+    MissingInstrumentMethod = 26;
+    SequenceCompletedSomeFilesNotMoved = 27;
+}
+
+enum DeviceState {
+    Initializing = 0;
+    ReadyToDownload = 1;
+    Downloading = 2;
+    PreparingForRun = 3;
+    ReadyForRun = 4;
+    WaitingForContactClosure = 5;
+    Running = 6;
+    PostRunX = 7;
+    ErrorX = 8;
+    Busy = 9;
+    NotConnected = 10;
+    Standby = 11;
+    Off = 12;
+    ServerFailed = 13;
+    LampWarmup = 14;
+    NotReady = 15;
+    DirectControl = 16;
+}
+
+enum DeviceType {
+    MS = 0;
+    LC = 1;
+    GC = 2;
+    AS = 3;
+    Detector = 4;
+    Other = 5;
+}
+
+message SequenceEvent {
+  string sequenceId = 1;
+  string sampleId = 2;
+  SequenceState sequenceState = 3;
+  bool isError = 4;
+}
+
+message AcquisitionEvent {
+  string sequenceId = 1;
+  string sampleId = 2;
+  AcquisitionState acquisitionState = 3;
+}
+
+message DeviceEvent {
+    repeated DeviceStatus deviceStatus = 1;
+}
+
+message DeviceStatus {
+  string deviceName = 1;
+  DeviceType deviceType = 2;
+  DeviceState deviceState = 3;
+}

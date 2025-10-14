@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.example.rest.OpalRestApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.444 s <<< FAILURE! - in com.example.rest.OpalRestApiTest
+testSseWithEventSourceAndRestAssured(com.example.rest.OpalRestApiTest)  Time elapsed: 1.513 s  <<< FAILURE!
+org.codehaus.groovy.runtime.typehandling.GroovyCastException: Cannot cast object 'org.apache.http.impl.client.InternalHttpClient@75ed7512' with class 'org.apache.http.impl.client.InternalHttpClient' to class 'org.apache.http.impl.client.AbstractHttpClient'
+	at com.example.rest.OpalRestApiTest.testSseWithEventSourceAndRestAssured(OpalRestApiTest.java:203)
+

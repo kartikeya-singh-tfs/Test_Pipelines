@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>ThermoFisher.SampleOnionModule.Abstractions</AssemblyName>
+    <RootNamespace>ThermoFisher.SampleOnionModule.Abstractions</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EventRouterModule\EventRouterModule.Contracts\EventRouterModule.Contracts.csproj" />
+  </ItemGroup>
+</Project>

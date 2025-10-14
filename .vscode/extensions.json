@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "csharpier.csharpier-vscode",
+    "EditorConfig.EditorConfig",
+    "task.vscode-task",
+    "DavidAnson.vscode-markdownlint",
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.vscode-dotnet-runtime"
+  ]
+}

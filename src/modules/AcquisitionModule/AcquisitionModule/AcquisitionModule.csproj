@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ThermoFisher.AcquisitionModule</AssemblyName>
+    <RootNamespace>ThermoFisher.AcquisitionModule</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.66.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\shared\Shared.Abstractions\Shared.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Protobuf Include=".\Contracts\acquisition.proto" GrpcServices="Server" />
+  </ItemGroup>
+  <ItemGroup>
+    <Protobuf Include=".\Contracts\rawDataAccess.proto" GrpcServices="Server" />
+  </ItemGroup>
+</Project>

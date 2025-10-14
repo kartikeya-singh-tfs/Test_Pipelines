@@ -1,0 +1,36 @@
+using Grpc.Core;
+using System.Threading.Tasks;
+using ThermoFisher.AcquisitionModule.Contracts; // Namespace from your proto
+
+public class MockAcquisitionService : AcquisitionService.AcquisitionServiceBase
+{
+    public override Task<DeviceStatusResponse> GetDeviceStatus(DeviceStatusRequest request, ServerCallContext context)
+    {
+        // Return mock response
+        var response = new DeviceStatusResponse
+        {
+            Status = DeviceStatus.Online,
+            Message = "Mock device is online"
+        };
+        return Task.FromResult(response);
+    }
+
+    // Override other methods as needed
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        const int Port = 50051;
+        var server = new Server
+        {
+            Services = { AcquisitionService.BindService(new MockAcquisitionService()) },
+            Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
+        };
+        server.Start();
+        Console.WriteLine($"Mock Acquisition Agent listening on port {Port}");
+        Console.ReadLine();
+        server.ShutdownAsync().Wait();
+    }
+}

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ThermoFisher.EventRouterModule</AssemblyName>
+    <RootNamespace>ThermoFisher.EventRouterModule</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>EventRouterModule.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\shared\Shared.Abstractions\Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\EventRouterModule.Contracts\EventRouterModule.Contracts.csproj" />
+  </ItemGroup>
+</Project>

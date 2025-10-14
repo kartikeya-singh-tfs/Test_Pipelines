@@ -1,0 +1,98 @@
+name: CI - Maven Tests
+
+on:
+  push:
+    branches: [ POC_APITests ]
+  pull_request:
+    branches: [ POC_APITests ]
+  workflow_dispatch:
+    inputs:
+      test_group:
+        description: 'TestNG group to run (e.g. integration, smoke). If empty runs default tests.'
+        required: false
+        default: ''
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      MAVEN_OPTS: -Xmx1g
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Cache Maven repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
+
+      # Optional: start your API here if tests need a running service.
+      # Example (uncomment to use):
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v3
+      #   with:
+      #     dotnet-version: '9.0.x'
+      # - name: Start API (background)
+      #   run: dotnet run --project src/Api --urls "http://0.0.0.0:51641;https://0.0.0.0:61350" &
+
+      - name: Compile API tests (fast)
+        run: mvn -B -DskipTests=true test-compile
+        working-directory: tests/API
+
+      - name: Determine test group
+        id: determine-group
+        run: |
+          # Priority: workflow_dispatch input -> git tag name -> (empty = default tests)
+          echo "GITHUB_REF=$GITHUB_REF"
+          INPUT_GROUP="${{ github.event.inputs.test_group }}"
+          if [ -n "$INPUT_GROUP" ]; then
+            echo "Using workflow input test_group=$INPUT_GROUP"
+            echo "TEST_GROUP=$INPUT_GROUP" >> $GITHUB_ENV
+          elif [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            TAG_NAME=${GITHUB_REF#refs/tags/}
+            echo "Using git tag as test group: $TAG_NAME"
+            echo "TEST_GROUP=$TAG_NAME" >> $GITHUB_ENV
+          else
+            echo "No test group specified; running default tests"
+            echo "TEST_GROUP=" >> $GITHUB_ENV
+          fi
+
+      - name: Run API tests
+        run: |
+          if [ -n "$TEST_GROUP" ]; then
+            echo "Running tests for group: $TEST_GROUP"
+            mvn -B -Dgroups="$TEST_GROUP" test
+          else
+            echo "Running default test set"
+            mvn -B test
+          fi
+        working-directory: tests/API
+
+      - name: Upload surefire reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: tests/API/target/surefire-reports
+
+      - name: Publish test results (GitHub annotation)
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: API Tests
+          path: tests/API/target/surefire-reports/TEST-*.xml
+          reporter: junit

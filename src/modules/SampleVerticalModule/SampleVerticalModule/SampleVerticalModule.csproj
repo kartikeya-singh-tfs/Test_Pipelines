@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ThermoFisher.SampleVerticalModule</RootNamespace>
+    <AssemblyName>ThermoFisher.SampleVerticalModule</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleVerticalModule.Abstractions\SampleVerticalModule.Abstractions.csproj" />
+    <ProjectReference Include="..\SampleVerticalModule.Contracts\SampleVerticalModule.Contracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+    <PackageReference
+      Include="Microsoft.Extensions.DependencyInjection.Abstractions"
+      Version="9.0.7"
+    />
+  </ItemGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>SampleVerticalModule.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>

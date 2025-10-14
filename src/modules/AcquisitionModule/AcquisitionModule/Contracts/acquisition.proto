@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package ThermoFisher.AcquisitionModule.Contracts;
+
+option csharp_namespace = "ThermoFisher.AcquisitionModule.Contracts";
+
+// The greeting service definition.
+service Acquisition {
+  rpc SubmitSampleStream (EmptyRequest) returns (stream SequenceReplyStream) {}
+  rpc SequenceStateEvent(SequenceEvent) returns (EmptyResponse) {}
+  rpc AcquisitionStateEvent(AcquisitionEvent) returns (EmptyResponse) {}
+  rpc DeviceStateEvent(DeviceEvent) returns (EmptyResponse) {}
+}
+
+message EmptyRequest {
+}
+
+message EmptyResponse {
+}
+
+message SequenceReplyStream {
+  string id = 1;
+  repeated SampleReply samples = 2;
+}
+
+message SampleReply {
+  string id = 1;
+  string sampleName = 2;
+  string methodFilePath = 3;
+  string rawFilePath = 4;
+}
+
+enum AcquisitionState {
+    Stopped = 0;
+    Error = 1;
+    Load = 2;
+    Initialize = 3;
+    WaitInitialize = 4;
+    WaitReady = 5;
+    Ready = 6;
+    ReadBarcode = 7;
+    WaitBarcode = 8;
+    WaitBarcodeError = 9;
+    SendMethod = 10;
+    WaitMethodReady = 11;
+    PreAcquisitionProgram = 12;
+    WaitPreAcquisitionProgram = 13;
+    WaitStartSlaves = 14;
+    WaitStartMaster = 15;
+    WaitContactClosure = 16;
+    Acquire = 17;
+    WaitMethodRun = 18;
+    PostAcquisitionProgram = 19;
+    WaitPostAcquisitionProgram = 20;
+    PostRun = 21;
+    Abort = 22;
+}
+
+enum SequenceState {
+    SequenceStart = 0;
+    SequenceComplete = 1;
+    SampleStart = 2;
+    DataFileCreate = 3;
+    SampleComplete = 4;
+    InvalidDeviceList = 5;
+    DeviceError = 6;
+    BarcodeError = 7;
+    MethodValidationFail = 8;
+    MethodValidationOk = 9;
+    InvalidVial = 10;
+    InvalidInjectionVolume = 11;
+    DataFileCreateFail = 12;
+    MethodDownloadFail = 13;
+    PreAcquisitionProgramRunFail = 14;
+    PostAcquisitionProgramRunFail = 15;
+    MethodStoreFail = 16;
+    ChangeOperatingModeFail = 17;
+    DeviceInitializeFail = 18;
+    SequenceCompletedFilesMoved = 19;
+    SequencePausedFilesMoved = 20;
+    DiskSpaceLow = 21;
+    InstrumentSentMessage = 22;
+    StartRunFail = 23;
+    StopRunFail = 24;
+    DeviceDetached = 25;
+    MissingInstrumentMethod = 26;
+    SequenceCompletedSomeFilesNotMoved = 27;
+}
+
+enum DeviceState {
+    Initializing = 0;
+    ReadyToDownload = 1;
+    Downloading = 2;
+    PreparingForRun = 3;
+    ReadyForRun = 4;
+    WaitingForContactClosure = 5;
+    Running = 6;
+    PostRunX = 7;
+    ErrorX = 8;
+    Busy = 9;
+    NotConnected = 10;
+    Standby = 11;
+    Off = 12;
+    ServerFailed = 13;
+    LampWarmup = 14;
+    NotReady = 15;
+    DirectControl = 16;
+}
+
+enum DeviceType {
+    MS = 0;
+    LC = 1;
+    GC = 2;
+    AS = 3;
+    Detector = 4;
+    Other = 5;
+}
+
+message SequenceEvent {
+  string sequenceId = 1;
+  string sampleId = 2;
+  SequenceState sequenceState = 3;
+  bool isError = 4;
+}
+
+message AcquisitionEvent {
+  string sequenceId = 1;
+  string sampleId = 2;
+  AcquisitionState acquisitionState = 3;
+}
+
+message DeviceEvent {
+    repeated DeviceStatus deviceStatus = 1;
+}
+
+message DeviceStatus {
+  string deviceName = 1;
+  DeviceType deviceType = 2;
+  DeviceState deviceState = 3;
+}

@@ -1,0 +1,72 @@
+permissions:
+  contents: read
+  pull-requests: read
+name: PR Template Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-template:
+    runs-on: arc-runner-set-opal
+    steps:
+      - name: Validate PR body against template
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Bots don't have to use our PR template
+            // e.g. dependabot uses its own purpose-built template
+            if (context.payload.pull_request.user.type === 'Bot')
+            {
+              core.notice("➡️ PR was created by a bot. Skipping template check.");
+              return;
+            }
+
+            const prBody = (context.payload.pull_request.body || "").trim();
+
+            const requiredSections = [
+              "## Purpose and Scope of the Change",
+              "## High-Level Summary of Functionality",
+              "## UI Screenshots (if applicable)",
+            ];
+
+            let missing = [];
+            let empty = [];
+
+            for (let i = 0; i < requiredSections.length; i++) {
+              const section = requiredSections[i];
+              const start = prBody.indexOf(section);
+
+              if (start === -1) {
+                missing.push(section);
+              } else {
+                // Grab text after this section until the next "## " or end of body
+                const nextSectionStart = prBody
+                  .slice(start + section.length)
+                  .search(/\n## /);
+
+                const sectionContent = nextSectionStart === -1
+                  ? prBody.slice(start + section.length).trim()
+                  : prBody
+                      .slice(start + section.length, start + section.length + nextSectionStart)
+                      .trim();
+
+                if (!sectionContent || sectionContent.startsWith("<!--")) {
+                  empty.push(section);
+                }
+              }
+            }
+
+            if (missing.length > 0 || empty.length > 0) {
+              let msg = "❌ PR body validation failed:\n";
+              if (missing.length > 0) {
+                msg += `- Missing sections:\n${missing.map(s => "  • " + s).join("\n")}\n`;
+              }
+              if (empty.length > 0) {
+                msg += `- Sections with no content:\n${empty.map(s => "  • " + s).join("\n")}\n`;
+              }
+              core.setFailed(msg);
+            } else {
+              core.notice("✅ All required PR template sections are present and filled.");
+            }

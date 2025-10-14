@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+// Always set option csharp_namespace explicitly in .proto files when generating C# code—this ensures clean, 
+// predictable namespaces in your application.
+option csharp_namespace = "ThermoFisher.AcquisitionModule.Contracts";
+
+// Groups proto definitions logically
+package ThermoFisher.AcquisitionModule.Contracts;
+
+service RealTimePlotService {
+  rpc StreamSparklineData (stream SparklineData) returns (stream PlotDataResponse);
+  rpc StreamChromatogramSvgData (stream ChromatogramSvgData) returns (stream PlotDataResponse);
+  rpc UploadSparklineData (SparklineData) returns (PlotDataResponse);
+  rpc UploadChromatogramSvgData (ChromatogramSvgData) returns (PlotDataResponse);
+}
+
+message SparklineDataDto
+{
+	string type = 1;
+	SparklineData data = 2;
+}
+
+message SparklineData
+{
+	string sequence_id = 1;
+	string sample_id = 2;
+	int32 start_scan_number = 3;
+	int32 end_scan_number = 4;
+	repeated double intensities = 5;
+}
+
+message ChromatogramSvgDataDto
+{
+	string type = 1;
+	ChromatogramSvgData data = 2;
+}
+
+message ChromatogramSvgData
+{
+	string sequence_id = 1;
+	string sample_id = 2;
+	int32 start_scan_number = 3;
+	int32 end_scan_number = 4;
+	string chromatogram_svg = 5;
+}
+
+message PlotDataResponse
+{
+	UploadStatusType status = 1;
+	string message = 2;           // optional detail if needed
+}
+
+enum UploadStatusType
+{
+  UPLOAD_STATUS_UNSPECIFIED = 0;  // Default fallback (required in proto3)
+	ACK = 1;                      // Acknowledged, still processing
+	OK = 2;                       // Successfully processed
+	ERROR = 3;                    // A generic failure
+	INVALID_DATA = 4;             // Data failed validation
+  CANCELLED = 5;                // Client cancelled the stream
+}

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\shared\Shared.Abstractions\Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\SampleOnionModule\SampleOnionModule.Contracts\SampleOnionModule.Contracts.csproj" />
+    <ProjectReference Include="..\SampleVerticalModule\SampleVerticalModule.csproj" />
+    <ProjectReference Include="..\SampleVerticalModule.Abstractions\SampleVerticalModule.Abstractions.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ThermoFisher.SampleVerticalModule.Opal</RootNamespace>
+    <AssemblyName>ThermoFisher.SampleVerticalModule.Opal</AssemblyName>
+  </PropertyGroup>
+</Project>

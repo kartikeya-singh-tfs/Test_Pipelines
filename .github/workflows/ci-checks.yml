@@ -1,0 +1,97 @@
+name: Lint, Build and Test
+
+permissions:
+  contents: read
+
+on:
+  - pull_request
+
+jobs:
+  all-linux-lint-build-test:
+    runs-on: arc-runner-set-opal
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          globs: '**/*.md'
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore .NET dependencies
+        run: dotnet restore
+
+      - name: Build .NET solution
+        run: dotnet build --no-restore
+
+      - name: Run .NET tests
+        run: dotnet test --no-build --verbosity normal
+
+      - name: Check .NET code formatting
+        run: |
+          dotnet tool restore
+          dotnet csharpier check .
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+          cache-dependency-path: 'src/clients/web/opal-web/package-lock.json'
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: src/clients/web/opal-web
+
+      - name: Build frontend
+        run: npm run build
+        working-directory: src/clients/web/opal-web
+
+      - name: Check frontend formatting
+        run: npx prettier . --check
+        working-directory: src/clients/web/opal-web
+
+  backend-win-build-test:
+    runs-on: windows-latest
+    if: false # temporarily disabled until we have a self-hosted Windows runner
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore .NET dependencies
+        run: dotnet restore
+
+      - name: Build .NET solution
+        run: dotnet build --no-restore
+
+      - name: Run .NET tests
+        run: dotnet test --no-build --verbosity normal
+
+  backend-mac-build-test:
+    runs-on: macos-latest
+    if: false # temporarily disabled until we have a self-hosted macOS runner
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore .NET dependencies
+        run: dotnet restore
+
+      - name: Build .NET solution
+        run: dotnet build --no-restore
+
+      - name: Run .NET tests
+        run: dotnet test --no-build --verbosity normal
+
