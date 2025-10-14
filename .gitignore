@@ -1,0 +1,42 @@
+.vscode/*
+!.vscode/extensions.json
+*coverage.out
+**/.DS_Store
+
+# remove all .vs folders
+*.vs
+
+# following lines are added to add csharpier.json
+!/.vs/
+/.vs/*
+!/.vs/Thermofisher.Opal/
+/.vs/Thermofisher.Opal/*
+!/.vs/Thermofisher.Opal/v17/
+/.vs/Thermofisher.Opal/v17/*
+!.vs/Thermofisher.Opal/v17/csharpier.json
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Claude Code local files
+CLAUDE.local.md
+
+# .pg_password is currently used to store the password for the local PostgreSQL DB
+.pg_password
+/src/utils/AcquisitionPOC/packages
+*.user
+
+src/clients/web/opal-web/.eslintcache

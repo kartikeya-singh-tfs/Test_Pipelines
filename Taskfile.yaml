@@ -1,0 +1,161 @@
+ttask npm-install-opal-webtask npm-install-opal-web# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  install:
+    desc: Install dependencies
+    deps:
+      - dotnet-install
+      - db-install
+      - npm-install-opal-web
+
+  update:
+    desc: Update dependencies
+    deps:
+      - npm-update-opal-web
+
+  dev:
+    desc: Start the development servers
+    deps:
+      - npm-dev-opal-web
+      - dotnet-dev
+
+  build:
+    desc: Build the project
+    deps:
+      - npm-build-opal-web
+      - dotnet-build
+
+  test:
+    desc: Run unit tests
+    deps:
+      - dotnet-test
+
+  fix:
+    desc: Fix issues found by static analysis
+    deps:
+      - md-fix
+
+  lint:
+    desc: Perform static analysis (linting)
+    deps:
+      - md-lint
+      - npm-lint-opal-web
+
+  fmt:
+    desc: Format source code
+    deps:
+      - dotnet-fmt
+      - npm-fmt-opal-web
+
+  check-fmt:
+    desc: Check source code formatting
+    deps:
+      - dotnet-check-fmt
+      - npm-check-fmt-opal-web
+
+  md-fix:
+    desc: Fix issues in markdown files
+    cmds:
+      - markdownlint-cli2 **/*.md
+
+  md-lint:
+    desc: Lint markdown files
+    cmds:
+      - markdownlint-cli2 **/*.md
+
+  npm-lint-opal-web:
+    desc: Lint npm/frontend files
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npm run lint
+
+  npm-install-opal-web:
+    desc: Install npm dependencies
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npm install
+
+  npm-update-opal-web:
+    desc: Update npm dependencies
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npm update
+
+  npm-dev-opal-web:
+    desc: Start the development server for the frontend
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npm run dev
+
+  npm-build-opal-web:
+    desc: Build the frontend
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npm run build
+
+  npm-fmt-opal-web:
+    desc: Format frontend code
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npx prettier . --write
+
+  npm-check-fmt-opal-web:
+    desc: Check frontend code formatting
+    dir: ./src/clients/web/opal-web
+    cmds:
+      - npx prettier . --check
+
+  dotnet-install:
+    desc: Install NuGet dependencies
+    cmds:
+      - dotnet restore
+
+  dotnet-dev:
+    desc: Start the development server for the backend
+    cmds:
+      - dotnet watch run --project src/Api/Api.csproj --launch-profile https
+    deps:
+      - db-start
+
+  dotnet-build:
+    desc: Build the backend
+    cmds:
+      - dotnet build
+
+  dotnet-test:
+    desc: Run backend unit tests
+    cmds:
+      - dotnet test
+
+  dotnet-fmt:
+    desc: Format .NET code
+    cmds:
+      - dotnet csharpier format .
+
+  dotnet-check-fmt:
+    desc: Check .NET code formatting
+    cmds:
+      - dotnet csharpier check .
+
+  db-install:
+    desc: Install a development database
+    cmds:
+      - pwsh ./scripts/create-postgresql-db.ps1
+    status:
+      - if pwsh ./scripts/invoke-postgresql.ps1 status ; then true ; else [[ $? -ne 4 ]] ; fi
+
+  db-start:
+    desc: Start the database server
+    cmds:
+      - pwsh ./scripts/invoke-postgresql.ps1 start
+    status:
+      - pwsh ./scripts/invoke-postgresql.ps1 status
+
+  db-stop:
+    desc: Stop the database server
+    cmds:
+      - pwsh ./scripts/invoke-postgresql.ps1 stop
+    status:
+      - if pwsh ./scripts/invoke-postgresql.ps1 status ; then false ; else [[ $? -eq 3 ]] ; fi

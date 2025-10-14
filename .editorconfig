@@ -1,0 +1,24 @@
+; https://editorconfig.org/
+
+root = true
+
+[*]
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[{*.cs,*.ps1,*.psm1,*.py}]
+indent_size = 4
+
+; These formats should use tabs:
+; .sln: usually machine generated, uses tabs by default
+; We don't plan to use Makefiles, but the format relies on tabs
+; Go uses tabs by default
+[{*.sln,Makefile,go.mod,go.sum,*.go,.gitmodules}]
+indent_size = 4
+indent_style = tab
+
+[*.md]
+eclint_indent_style = unset
