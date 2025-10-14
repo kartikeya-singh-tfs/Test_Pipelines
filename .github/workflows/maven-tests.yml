@@ -2,9 +2,16 @@ name: CI - Maven Tests
 
 on:
   push:
-    branches: [ POC_APITests ]
+    branches:
+      - POC_APITests
+    tags:
+      - test_GA
+
   pull_request:
-    branches: [ POC_APITests ]
+    branches:
+      - POC_APITests
+
+  # ✅ Allow manual trigger from any branch
   workflow_dispatch:
     inputs:
       test_group:
@@ -41,15 +48,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      # Optional: start your API here if tests need a running service.
-      # Example (uncomment to use):
-      # - name: Setup .NET
-      #   uses: actions/setup-dotnet@v3
-      #   with:
-      #     dotnet-version: '9.0.x'
-      # - name: Start API (background)
-      #   run: dotnet run --project src/Api --urls "http://0.0.0.0:51641;https://0.0.0.0:61350" &
-
       - name: Compile API tests (fast)
         run: mvn -B -DskipTests=true test-compile
         working-directory: tests/API
@@ -57,7 +55,6 @@ jobs:
       - name: Determine test group
         id: determine-group
         run: |
-          # Priority: workflow_dispatch input -> git tag name -> (empty = default tests)
           echo "GITHUB_REF=$GITHUB_REF"
           INPUT_GROUP="${{ github.event.inputs.test_group }}"
           if [ -n "$INPUT_GROUP" ]; then
