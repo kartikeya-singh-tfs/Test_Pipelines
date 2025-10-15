@@ -21,7 +21,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: THERMO-ML7H3GOI
+    runs-on: APITestAgent
     defaults:
       run:
         shell: powershell
