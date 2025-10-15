@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Melbourne" parallel="false">
+<suite name="OpalApiTests" parallel="false">
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
@@ -7,38 +7,9 @@
     <test name="API">
         <packages>
             <package name="com.example.rest"/>
+            <package name="com.example.grpc"/>
             <package name="com.exampple.grpc"/>
+            <package name="com.example.integration"/>
         </packages>
-    </test>
-    
-    <test name="Workbook">
-        <parameter name="allure.report.name" value="Melbourne API Report" />
-        <parameter name="allure.report.title" value="Melbourne API Report" />
-        <classes>
-            <class name="WorkStreams.Workbook.CreateWorkbookTest"/>
-            <class name="WorkStreams.Workbook.UpdateWorkbookTest"/>
-            <class name="WorkStreams.Workbook.GetWorkbooksTest"/>
-            <class name="WorkStreams.Workbook.GetWorkbookHistoryTest"/>
-            <class name="WorkStreams.Workbook.GetRecentWorkbooksTest"/>
-            <class name="WorkStreams.Workbook.getAllWorkBooksTest"/>
-            <class name="WorkStreams.Workbook.SubmitWorkbookTest"/>
-        </classes>
-    </test>
-
-    <test name="Analysis">
-        <classes>
-            <class name="WorkStreams.Analysis.GetProcessingSoftwares"/>
-            <class name="WorkStreams.Analysis.GetSoftwareTemplates"/>
-            <class name="WorkStreams.Analysis.GetRegistrations"/>
-            <class name="WorkStreams.Analysis.GetAllMetaData"/>
-            <class name="WorkStreams.Analysis.GetMetaDataValue"/>
-            <class name="WorkStreams.Analysis.GetWorkbookAnalysis"/>
-        </classes>
-    </test>
-    
-    <test name="OpalRestApi">
-        <classes>
-            <class name="com.example.rest.OpalRestApiTest"/>
-        </classes>
     </test>
 </suite>
