@@ -1,16 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="AllTests">
-  <test name="API">
-    <packages>
-      <package name="com.example.rest"/>
-    </packages>
-  </test>
-</suite>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Melbourne" parallel="false">
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
+    
+    <test name="API">
+        <packages>
+            <package name="com.example.rest"/>
+            <package name="com.exampple.grpc"/>
+        </packages>
+    </test>
+    
     <test name="Workbook">
         <parameter name="allure.report.name" value="Melbourne API Report" />
         <parameter name="allure.report.title" value="Melbourne API Report" />
@@ -35,6 +35,7 @@
             <class name="WorkStreams.Analysis.GetWorkbookAnalysis"/>
         </classes>
     </test>
+    
     <test name="OpalRestApi">
         <classes>
             <class name="com.example.rest.OpalRestApiTest"/>
