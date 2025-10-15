@@ -21,10 +21,10 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: THERMO-ML7H3GOI
     defaults:
       run:
-        shell: bash
+        shell: powershell
 
     env:
       MAVEN_OPTS: -Xmx1g
@@ -33,17 +33,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17 (Temurin)
+      - name: Set up JDK 21 (Temurin)
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
           cache: 'maven'
 
       - name: Cache Maven repository
         uses: actions/cache@v4
         with:
-          path: ~/.m2/repository
+          path: ~\.m2\repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2-
@@ -55,29 +55,29 @@ jobs:
       - name: Determine test group
         id: determine-group
         run: |
-          echo "GITHUB_REF=$GITHUB_REF"
-          INPUT_GROUP="${{ github.event.inputs.test_group }}"
-          if [ -n "$INPUT_GROUP" ]; then
-            echo "Using workflow input test_group=$INPUT_GROUP"
-            echo "TEST_GROUP=$INPUT_GROUP" >> $GITHUB_ENV
-          elif [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            TAG_NAME=${GITHUB_REF#refs/tags/}
-            echo "Using git tag as test group: $TAG_NAME"
-            echo "TEST_GROUP=$TAG_NAME" >> $GITHUB_ENV
-          else
-            echo "No test group specified; running default tests"
-            echo "TEST_GROUP=" >> $GITHUB_ENV
-          fi
+          Write-Host "GITHUB_REF=$env:GITHUB_REF"
+          $INPUT_GROUP = "${{ github.event.inputs.test_group }}"
+          if ($INPUT_GROUP) {
+            Write-Host "Using workflow input test_group=$INPUT_GROUP"
+            echo "TEST_GROUP=$INPUT_GROUP" | Out-File -FilePath $env:GITHUB_ENV -Append
+          } elseif ($env:GITHUB_REF -like "refs/tags/*") {
+            $TAG_NAME = $env:GITHUB_REF -replace "refs/tags/", ""
+            Write-Host "Using git tag as test group: $TAG_NAME"
+            echo "TEST_GROUP=$TAG_NAME" | Out-File -FilePath $env:GITHUB_ENV -Append
+          } else {
+            Write-Host "No test group specified; running default tests"
+            echo "TEST_GROUP=" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
 
       - name: Run API tests
         run: |
-          if [ -n "$TEST_GROUP" ]; then
-            echo "Running tests for group: $TEST_GROUP"
-            mvn -B -Dgroups="$TEST_GROUP" test
-          else
-            echo "Running default test set"
+          if ($env:TEST_GROUP) {
+            Write-Host "Running tests for group: $env:TEST_GROUP"
+            mvn -B -Dgroups="$env:TEST_GROUP" test
+          } else {
+            Write-Host "Running default test set"
             mvn -B test
-          fi
+          }
         working-directory: tests/API
 
       - name: Upload surefire reports

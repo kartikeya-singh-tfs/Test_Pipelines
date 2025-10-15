@@ -131,7 +131,7 @@ public class OpalRestApiTest {
         }
     }
 
-    @Test
+    @Test(groups = "Rest")
     public void testSseWithEventSourceAndRestAssured() throws Exception {
         final String sseUrl = "https://localhost:61350/api/acquisition/v1/sseSparklineData";
 

@@ -38,7 +38,7 @@ public class GrpcCallReplicationTest {
         private static final String SAMPLE_ID = "61f6b9b7-7149-49b9-be33-207b2d9da941";
         private static final String ZERO_GUID = "00000000-0000-0000-0000-000000000000";
 
-        @Test
+        @Test(groups = "GRPC")
         public void replicateAcquisitionLifecycle() throws InterruptedException {
                 // --- SSE subscription (generic lifecycle events) ---
                 final String sseUrl = "https://localhost:61350/api/acquisition/v1/sse"; // generic SSE endpoint
