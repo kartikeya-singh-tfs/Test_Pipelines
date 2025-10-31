@@ -44,7 +44,7 @@ jobs:
       - name: Cache Maven repository
         uses: actions/cache@v4
         with:
-          path: ~\.m2\repository
+          path: '~\\.m2\\repository'
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2-
@@ -53,26 +53,27 @@ jobs:
         run: mvn -B -DskipTests=true test-compile
         working-directory: tests/API
 
-    - name: Build and launch required servers (Thermofisher.Opal + OnPremAcquisition)
-    run: |
-      Write-Host "Building Thermofisher.Opal.sln and OnPremAcquisition.sln..."
-      # Build the main solution (Opal)
-      msbuild.exe "${{ github.workspace }}\Thermofisher.Opal.sln" /p:Configuration=Debug /m
+      - name: Build and launch required servers (Thermofisher.Opal + OnPremAcquisition)
+        run: |
+          Write-Host "Building Thermofisher.Opal.sln and OnPremAcquisition.sln..."
+          # Build the main solution (Opal)
+          msbuild.exe "${{ github.workspace }}\Thermofisher.Opal.sln" /p:Configuration=Debug /m
 
-      # Build and launch OnPremAcquisition (dotnet run as background job)
-      Push-Location "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition"
-      dotnet build -c Debug
-      $onPremDll = "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\bin\Debug\net7.0\OnPremAcquisition.dll"
-      if (Test-Path $onPremDll) {
-        Write-Host "Starting OnPremAcquisition (dotnet) ..."
-        $proc = Start-Process -FilePath "dotnet" -ArgumentList "$onPremDll" -PassThru -WindowStyle Hidden
-        Write-Host "OnPremAcquisition PID=$($proc.Id)"
-        # store pid for later shutdown
-        echo "ONPREM_PID=$($proc.Id)" | Out-File -FilePath $env:GITHUB_ENV -Append
-      } else {
-        Write-Host "OnPremAcquisition binary not found at $onPremDll"
-      }
-      Pop-Location
+          # Build and launch OnPremAcquisition (dotnet run as background job)
+          Push-Location "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition"
+          dotnet build -c Debug
+          $onPremDll = "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\bin\Debug\net7.0\OnPremAcquisition.dll"
+          if (Test-Path $onPremDll) {
+              Write-Host "Starting OnPremAcquisition (dotnet) ..."
+              $proc = Start-Process -FilePath "dotnet" -ArgumentList "$onPremDll" -PassThru -WindowStyle Hidden
+              Write-Host "OnPremAcquisition PID=$($proc.Id)"
+              # store pid for later shutdown
+              echo "ONPREM_PID=$($proc.Id)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          } else {
+              Write-Host "OnPremAcquisition binary not found at $onPremDll"
+          }
+          Pop-Location
+
       - name: Wait for servers to become ready
         run: |
           Write-Host "Waiting briefly for servers to start..."
