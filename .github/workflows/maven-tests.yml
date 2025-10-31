@@ -21,6 +21,7 @@ on:
 
 jobs:
   build-and-test:
+    needs: RunSmokeTest_Automation02
     runs-on: APITestAgent
     defaults:
       run:
@@ -52,6 +53,32 @@ jobs:
         run: mvn -B -DskipTests=true test-compile
         working-directory: tests/API
 
+    - name: Build and launch required servers (Thermofisher.Opal + OnPremAcquisition)
+    run: |
+      Write-Host "Building Thermofisher.Opal.sln and OnPremAcquisition.sln..."
+      # Build the main solution (Opal)
+      msbuild.exe "${{ github.workspace }}\Thermofisher.Opal.sln" /p:Configuration=Debug /m
+
+      # Build and launch OnPremAcquisition (dotnet run as background job)
+      Push-Location "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition"
+      dotnet build -c Debug
+      $onPremDll = "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\bin\Debug\net7.0\OnPremAcquisition.dll"
+      if (Test-Path $onPremDll) {
+        Write-Host "Starting OnPremAcquisition (dotnet) ..."
+        $proc = Start-Process -FilePath "dotnet" -ArgumentList "$onPremDll" -PassThru -WindowStyle Hidden
+        Write-Host "OnPremAcquisition PID=$($proc.Id)"
+        # store pid for later shutdown
+        echo "ONPREM_PID=$($proc.Id)" | Out-File -FilePath $env:GITHUB_ENV -Append
+      } else {
+        Write-Host "OnPremAcquisition binary not found at $onPremDll"
+      }
+      Pop-Location
+      - name: Wait for servers to become ready
+        run: |
+          Write-Host "Waiting briefly for servers to start..."
+          Start-Sleep -Seconds 5
+          # Optionally add health-checks here (curl / tcping)
+
       - name: Determine test group
         id: determine-group
         run: |
@@ -80,11 +107,62 @@ jobs:
           }
         working-directory: tests/API
 
+      - name: Stop started servers (cleanup)
+        if: always()
+        run: |
+          Write-Host "Stopping started servers..."
+          if ($env:ONPREM_PID) {
+            Write-Host "Killing OnPremAcquisition PID=$env:ONPREM_PID"
+            Stop-Process -Id $env:ONPREM_PID -Force -ErrorAction SilentlyContinue
+          } else {
+            Write-Host "No OnPremAcquisition PID found in env"
+          }
+
       - name: Upload surefire reports
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: tests/API/target/surefire-reports
+
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          # Download Allure CLI if not cached
+          if (!(Test-Path "allure-2.25.0")) {
+            Write-Host "Downloading Allure CLI..."
+            Invoke-WebRequest -Uri "https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.zip" -OutFile "allure.zip"
+            Expand-Archive -Path "allure.zip" -DestinationPath "." -Force
+            Remove-Item "allure.zip"
+          }
+          
+          # Generate Allure report from results
+          Write-Host "Generating Allure report..."
+          .\allure-2.25.0\bin\allure.bat generate tests/API/allure-results --clean -o allure-report
+          
+          # Create index.html redirect for easier navigation
+          @"
+          <!DOCTYPE html>
+          <html>
+          <head><meta http-equiv="refresh" content="0; url=./index.html"></head>
+          <body><a href="./index.html">View Allure Report</a></body>
+          </html>
+          "@ | Out-File -FilePath "allure-report/report.html" -Encoding UTF8
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 30
+
+      - name: Upload Allure Results (Raw Data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: tests/API/allure-results
+          retention-days: 7
 
       - name: Publish test results (GitHub annotation)
         if: always()
@@ -93,3 +171,5 @@ jobs:
           name: API Tests
           path: tests/API/target/surefire-reports/TEST-*.xml
           reporter: junit
+
+  

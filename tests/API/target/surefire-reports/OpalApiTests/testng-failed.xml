@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [OpalApiTests]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+  </listeners>
+  <test thread-count="5" name="API(failed)" verbose="0">
+    <classes>
+      <class name="com.example.projects.poc.grpc.OpalIntegrationWorkflowTest">
+        <methods>
+          <include name="testDeviceStateEventIntegration"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.grpc.OpalIntegrationWorkflowTest -->
+      <class name="com.example.projects.poc.grpc.RealTimePlotServiceIntegrationTest">
+        <methods>
+          <include name="testUploadSparklineData"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.grpc.RealTimePlotServiceIntegrationTest -->
+      <class name="com.example.projects.poc.rest.OpalRestApiTest">
+        <methods>
+          <include name="testSseWithEventSourceAndRestAssured"/>
+          <include name="testSubmitSampleWithRestAssured"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.rest.OpalRestApiTest -->
+      <class name="com.example.projects.poc.integration.RestSubmitSequenceStreamTest">
+        <methods>
+          <include name="restSubmitSequenceEmitsSequenceReplyStream"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.integration.RestSubmitSequenceStreamTest -->
+      <class name="com.example.projects.poc.grpc.MockAcquisitionServiceTest">
+        <methods>
+          <include name="replicateLifecycleWithoutSse"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.grpc.MockAcquisitionServiceTest -->
+      <class name="com.example.projects.poc.grpc.GrpcCallReplicationTest">
+        <methods>
+          <include name="replicateAcquisitionLifecycle"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.grpc.GrpcCallReplicationTest -->
+      <class name="com.example.projects.poc.grpc.OpalGrpcTest">
+        <methods>
+          <include name="testSubmitSampleStream"/>
+        </methods>
+      </class> <!-- com.example.projects.poc.grpc.OpalGrpcTest -->
+    </classes>
+  </test> <!-- API(failed) -->
+</suite> <!-- Failed suite [OpalApiTests] -->

@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-14T13:04:14 IST" name="Surefire suite" finished-at="2025-10-14T13:04:18 IST" duration-ms="4403">
+  <suite started-at="2025-10-31T12:53:17 IST" name="Surefire suite" finished-at="2025-10-31T12:53:31 IST" duration-ms="13322">
     <groups>
     </groups>
-    <test started-at="2025-10-14T13:04:14 IST" name="Surefire test" finished-at="2025-10-14T13:04:18 IST" duration-ms="4403">
-      <class name="com.exampple.grpc.GrpcCallReplicationTest">
-        <test-method signature="replicateAcquisitionLifecycle()[pri:0, instance:com.exampple.grpc.GrpcCallReplicationTest@5c089b2f]" started-at="2025-10-14T13:04:14 IST" name="replicateAcquisitionLifecycle" finished-at="2025-10-14T13:04:18 IST" duration-ms="4251" status="PASS">
+    <test started-at="2025-10-31T12:53:17 IST" name="Surefire test" finished-at="2025-10-31T12:53:31 IST" duration-ms="13322">
+      <class name="com.example.projects.poc.grpc.StreamSparklineDataRestTriggerTest">
+        <test-method signature="testStreamSparklineDataTriggeredByRestPost()[pri:0, instance:com.example.projects.poc.grpc.StreamSparklineDataRestTriggerTest@7e0b9178]" started-at="2025-10-31T12:53:17 IST" name="testStreamSparklineDataTriggeredByRestPost" finished-at="2025-10-31T12:53:31 IST" duration-ms="13217" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- replicateAcquisitionLifecycle -->
-      </class> <!-- com.exampple.grpc.GrpcCallReplicationTest -->
+        </test-method> <!-- testStreamSparklineDataTriggeredByRestPost -->
+      </class> <!-- com.example.projects.poc.grpc.StreamSparklineDataRestTriggerTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>

@@ -6,10 +6,11 @@
     
     <test name="API">
         <packages>
-            <package name="com.example.rest"/>
-            <package name="com.example.grpc"/>
-            <package name="com.exampple.grpc"/>
-            <package name="com.example.integration"/>
+            <package name="com.example.projects.poc.rest"/>
+            <package name="com.example.projects.poc.grpc"/>
+            <package name="com.example.projects.poc.integration"/>
+            <package name="com.example.projects.connectivity"/>
+            <package name="com.example.projects.instruments"/>
         </packages>
     </test>
 </suite>

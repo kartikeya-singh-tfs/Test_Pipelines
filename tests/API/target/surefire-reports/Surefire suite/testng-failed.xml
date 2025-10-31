@@ -3,11 +3,11 @@
 <suite thread-count="1" name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="1" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="com.example.grpc.OpalIntegrationWorkflowTest">
+      <class name="com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest">
         <methods>
-          <include name="testDeviceStateEventIntegration"/>
+          <include name="replicateAcquisitionLifecycleWithAllureGrpc"/>
         </methods>
-      </class> <!-- com.example.grpc.OpalIntegrationWorkflowTest -->
+      </class> <!-- com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.003 s - in com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest

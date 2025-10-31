@@ -1,15 +1,21 @@
-C:\OPAL API\tests\API\src\test\java\com\example\grpc\MockAcquisitionServiceTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\grpc\OpalGrpcTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\grpc\OpalIntegrationWorkflowTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\grpc\RawDataAccessServiceTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\grpc\RealTimePlotServiceIntegrationTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\integration\RestSubmitSequenceStreamTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\rest\OpalRestApiTest.java
-C:\OPAL API\tests\API\src\test\java\com\example\rest\RestAssuredSslConfigurer.java
-C:\OPAL API\tests\API\src\test\java\com\exampple\grpc\GrpcCallReplicationTest.java
-C:\OPAL API\tests\API\src\test\java\com\exampple\grpc\MockAcquisitionServiceTest.java
-C:\OPAL API\tests\API\src\test\java\com\exampple\grpc\RealTimePlotSseIntegrationTest.java
-C:\OPAL API\tests\API\src\test\java\Projects\Connectivity\Workflows.java
-C:\OPAL API\tests\API\src\test\java\Projects\Instruments\Instruments_Placeholder.java
-C:\OPAL API\tests\API\src\test\java\ThermoFisher\AcquisitionModule\Contracts\AcquisitionGrpc.java
-C:\OPAL API\tests\API\src\test\java\ThermoFisher\AcquisitionModule\Contracts\AcquisitionOuterClass.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\connectivity\WorkflowsTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\instruments\InstrumentsTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\commons\CommonUtilities.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\GrpcCallReplicationAllureGrpcTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\GrpcCallReplicationTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcAllureHelper.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcAllureTestListener.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcClientAllureInterceptor.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\SseEventListener.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\TestContext.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\MockAcquisitionServiceTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\OpalGrpcTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\OpalIntegrationWorkflowTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\RawDataAccessServiceTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\RealTimePlotServiceIntegrationTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\RealTimePlotSseIntegrationTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\StreamSparklineDataRestTriggerTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\SubmitSampleStreamRestTriggerTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\integration\RestSubmitSequenceStreamTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\rest\OpalRestApiTest.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\rest\RestAssuredSslConfigurer.java

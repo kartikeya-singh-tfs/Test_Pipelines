@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.exampple.grpc.GrpcCallReplicationTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.538 s - in com.exampple.grpc.GrpcCallReplicationTest

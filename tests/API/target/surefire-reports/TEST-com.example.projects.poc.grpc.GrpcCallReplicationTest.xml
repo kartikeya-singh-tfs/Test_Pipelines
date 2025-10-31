@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.projects.poc.grpc.GrpcCallReplicationTest" time="20.629" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\kartikeya.singh\tools\apache-maven-3.9.11\boot\plexus-classworlds-2.9.0.jar"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="maven.conf" value="C:\Users\kartikeya.singh\tools\apache-maven-3.9.11/conf"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -f tests/API/pom.xml -Dtest=GrpcCallReplicationTest test"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="maven.home" value="C:\Users\kartikeya.singh\tools\apache-maven-3.9.11"/>
+    <property name="test" value="GrpcCallReplicationTest"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\kartikeya.singh"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.8+12-LTS-250"/>
+    <property name="user.name" value="kartikeya.singh"/>
+    <property name="stdout.encoding" value="cp437"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\KARTIK~1.SIN\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="user.dir" value="C:\Git\Pipeline_Github_Actions"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Git\Pipeline_Github_Actions"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;c:\program files (x86)\smartbear\testcomplete 15\x64\bin;c:\program files (x86)\smartbear\testcomplete 15\x64\bin\Extensions\Python\Python313;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Thermo\Xcalibur\system\programs\;C:\Program Files (x86)\Thermo\Foundation\x64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files (x86)\Thermo\Foundation\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\GitHub CLI\;C:\ProgramData\chocolatey\bin;C:\protoc\bin;C:\protoc\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Thermo\Xcalibur\system\programs\;C:\Program Files (x86)\Thermo\Foundation\x64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files (x86)\Thermo\Foundation\;C:\Program Files\Java\jdk-21\bin;C:\Users\kartikeya.singh\AppData\Local\Microsoft\WindowsApps;C:\Users\kartikeya.singh\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\kartikeya.singh\.dotnet\tools;C:\Users\kartikeya.singh\AppData\Roamin;C:\Users\kartikeya.singh\tools\apache-maven-3.9.11\bin;c:\Users\kartikeya.singh\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.8+12-LTS-250"/>
+    <property name="classworlds.conf" value="C:\Users\kartikeya.singh\tools\apache-maven-3.9.11\bin\m2.conf"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="library.jansi.path" value="C:\Users\kartikeya.singh\tools\apache-maven-3.9.11\lib\jansi-native"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="replicateAcquisitionLifecycle" classname="com.example.projects.poc.grpc.GrpcCallReplicationTest" time="19.684">
+    <failure message="❌ Expected at least one SequenceStatus SSE event. Received 0 total events. expected [true] but found [false]" type="java.lang.AssertionError">java.lang.AssertionError: ❌ Expected at least one SequenceStatus SSE event. Received 0 total events. expected [true] but found [false]
+	at com.example.projects.poc.grpc.GrpcCallReplicationTest.validateSseEventTypes(GrpcCallReplicationTest.java:273)
+	at com.example.projects.poc.grpc.GrpcCallReplicationTest.replicateAcquisitionLifecycle(GrpcCallReplicationTest.java:178)
+</failure>
+    <system-out><![CDATA[[Client] SequenceStateEvent ack | context=MethodValidationOk sample=00000000-0000-0000-0000-000000000000 | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=SequenceStart sample=00000000-0000-0000-0000-000000000000 | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=SampleStart sample=61f6b9b7-7149-49b9-be33-207b2d9da941 | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=DataFileCreate sample=61f6b9b7-7149-49b9-be33-207b2d9da941 | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=ReadBarcode | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=SendMethod | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=SampleComplete sample=61f6b9b7-7149-49b9-be33-207b2d9da941 | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=WaitMethodReady | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=WaitStartSlaves | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=WaitStartMaster | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=WaitContactClosure | resp class=EmptyResponse
+[Client] DeviceStateEvent ack | context=ReadyForRun | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=Acquire | resp class=EmptyResponse
+[Client] DeviceStateEvent ack | context=Running | resp class=EmptyResponse
+[Client] DeviceStateEvent ack | context=ReadyToDownload | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=PostRun | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=SequenceComplete sample=00000000-0000-0000-0000-000000000000 | resp class=EmptyResponse
+[Client] SequenceStateEvent ack | context=SequenceCompletedFilesMoved sample=00000000-0000-0000-0000-000000000000 | resp class=EmptyResponse
+[Client] AcquisitionStateEvent ack | context=Ready | resp class=EmptyResponse
+[SSE] Total events received: 0
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[SSE] Error: java.net.SocketTimeoutException: timeout
+]]></system-err>
+  </testcase>
+</testsuite>

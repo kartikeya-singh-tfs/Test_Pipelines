@@ -15,7 +15,7 @@
         <aspectj.version>1.9.22.1</aspectj.version>
     </properties>
     <dependencies>
-        <!-- TestNG for Java testing -->
+    <!-- TestNG for Java testing -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -27,6 +27,13 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.21.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Allure gRPC interceptor for automatic gRPC attachments -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-grpc</artifactId>
+            <version>2.30.0</version>
             <scope>test</scope>
         </dependency>
         <!-- SLF4J Simple binding for logging output -->
@@ -115,12 +122,8 @@
             <artifactId>log4j-core</artifactId>
             <version>2.19.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.21.0</version>
-        </dependency>
+        
+        <!-- Allure TestNG already declared above; avoid duplicate declarations -->
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -153,8 +156,14 @@
 
         <!-- Removed duplicate TestNG dependency -->
 
+        <!-- protobuf-java-util for JsonFormat in tests -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>3.25.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
     <build>
         <resources>
             <resource>
