@@ -21,7 +21,6 @@ on:
 
 jobs:
   build-and-test:
-    needs: RunSmokeTest_Automation02
     runs-on: APITestAgent
     defaults:
       run:
