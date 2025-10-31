@@ -21,7 +21,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: APITestAgent
+    runs-on: windows-latest
     defaults:
       run:
         shell: powershell
@@ -52,26 +52,40 @@ jobs:
         run: mvn -B -DskipTests=true test-compile
         working-directory: tests/API
 
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore .NET packages for solutions
+        run: |
+          Write-Host "Restoring NuGet packages for Thermofisher.Opal.sln and OnPremAcquisition"
+          dotnet restore "${{ github.workspace }}\Thermofisher.Opal.sln"
+          dotnet restore "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\OnPremAcquisition.csproj"
+
       - name: Build and launch required servers (Thermofisher.Opal + OnPremAcquisition)
         run: |
           Write-Host "Building Thermofisher.Opal.sln and OnPremAcquisition.sln..."
-          # Build the main solution (Opal)
+          # Ensure dotnet SDK is available (setup-dotnet step is added below)
+          Write-Host "Building Thermofisher.Opal.sln via 'msbuild.exe'"
           msbuild.exe "${{ github.workspace }}\Thermofisher.Opal.sln" /p:Configuration=Debug /m
 
-          # Build and launch OnPremAcquisition (dotnet run as background job)
+          # Build and launch OnPremAcquisition (native .NET Framework exe)
           Push-Location "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition"
-          dotnet build -c Debug
-          $onPremDll = "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\bin\Debug\net7.0\OnPremAcquisition.dll"
-          if (Test-Path $onPremDll) {
-              Write-Host "Starting OnPremAcquisition (dotnet) ..."
-              $proc = Start-Process -FilePath "dotnet" -ArgumentList "$onPremDll" -PassThru -WindowStyle Hidden
+          Write-Host "Building OnPremAcquisition.csproj via 'msbuild.exe'"
+          msbuild.exe "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\OnPremAcquisition.csproj" /p:Configuration=Debug /m
+          $onPremExe = "${{ github.workspace }}\src\utils\AcquisitionPOC\OnPremAcquisition\bin\Debug\net48\OnPremAcquisition.exe"
+          if (Test-Path $onPremExe) {
+              Write-Host "Starting OnPremAcquisition executable..."
+              $proc = Start-Process -FilePath $onPremExe -PassThru -WindowStyle Hidden
               Write-Host "OnPremAcquisition PID=$($proc.Id)"
               # store pid for later shutdown
               echo "ONPREM_PID=$($proc.Id)" | Out-File -FilePath $env:GITHUB_ENV -Append
           } else {
-              Write-Host "OnPremAcquisition binary not found at $onPremDll"
+              Write-Host "OnPremAcquisition executable not found at $onPremExe"
           }
           Pop-Location
+
 
       - name: Wait for servers to become ready
         run: |
