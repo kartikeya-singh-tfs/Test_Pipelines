@@ -1,0 +1,132 @@
+[
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SayHello",
+    "streamingType": "UNARY",
+    "requestType": "HelloRequest",
+    "responseType": "HelloReply",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHello"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SayHelloServerStream",
+    "streamingType": "SERVER_STREAMING",
+    "requestType": "HelloRequest",
+    "responseType": "HelloReplyStream",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SayHelloClientStream",
+    "streamingType": "CLIENT_STREAMING",
+    "requestType": "HelloRequestStream",
+    "responseType": "HelloReply",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SayHelloStream",
+    "streamingType": "BIDI",
+    "requestType": "HelloRequestStream",
+    "responseType": "HelloReplyStream",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SubmitSampleStream",
+    "streamingType": "SERVER_STREAMING",
+    "requestType": "EmptyRequest",
+    "responseType": "SequenceReplyStream",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "SequenceStateEvent",
+    "streamingType": "UNARY",
+    "requestType": "SequenceEvent",
+    "responseType": "EmptyResponse",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "AcquisitionStateEvent",
+    "streamingType": "UNARY",
+    "requestType": "AcquisitionEvent",
+    "responseType": "EmptyResponse",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent"
+  },
+  {
+    "package": "ThermoFisher.Opal.Acquisition",
+    "service": "Acquisition",
+    "method": "DeviceStateEvent",
+    "streamingType": "UNARY",
+    "requestType": "DeviceEvent",
+    "responseType": "EmptyResponse",
+    "protoFile": "src/main/proto/acquisition.proto",
+    "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent"
+  },
+  {
+    "package": "ThermoFisher.AcquisitionModule.Contracts",
+    "service": "RealTimePlotService",
+    "method": "StreamSparklineData",
+    "streamingType": "BIDI",
+    "requestType": "SparklineData",
+    "responseType": "PlotDataResponse",
+    "protoFile": "src/main/proto/rawDataAccess.proto",
+    "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData"
+  },
+  {
+    "package": "ThermoFisher.AcquisitionModule.Contracts",
+    "service": "RealTimePlotService",
+    "method": "StreamChromatogramSvgData",
+    "streamingType": "BIDI",
+    "requestType": "ChromatogramSvgData",
+    "responseType": "PlotDataResponse",
+    "protoFile": "src/main/proto/rawDataAccess.proto",
+    "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData"
+  },
+  {
+    "package": "ThermoFisher.AcquisitionModule.Contracts",
+    "service": "RealTimePlotService",
+    "method": "UploadSparklineData",
+    "streamingType": "UNARY",
+    "requestType": "SparklineData",
+    "responseType": "PlotDataResponse",
+    "protoFile": "src/main/proto/rawDataAccess.proto",
+    "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData"
+  },
+  {
+    "package": "ThermoFisher.AcquisitionModule.Contracts",
+    "service": "RealTimePlotService",
+    "method": "UploadChromatogramSvgData",
+    "streamingType": "UNARY",
+    "requestType": "ChromatogramSvgData",
+    "responseType": "PlotDataResponse",
+    "protoFile": "src/main/proto/rawDataAccess.proto",
+    "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData"
+  },
+  {
+    "package": "sampleonion",
+    "service": "SampleOnionService",
+    "method": "GetCompounds",
+    "streamingType": "UNARY",
+    "requestType": "GetCompoundsRequest",
+    "responseType": "GetCompoundsResponse",
+    "protoFile": "src/main/proto/SampleOnionModule.proto",
+    "fullyQualifiedName": "sampleonion.SampleOnionService/GetCompounds"
+  }
+]

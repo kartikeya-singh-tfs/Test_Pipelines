@@ -1,0 +1,318 @@
+[
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SayHello",
+      "streamingType": "UNARY",
+      "requestType": "HelloRequest",
+      "responseType": "HelloReply",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHello"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SayHelloServerStream",
+      "streamingType": "SERVER_STREAMING",
+      "requestType": "HelloRequest",
+      "responseType": "HelloReplyStream",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SayHelloClientStream",
+      "streamingType": "CLIENT_STREAMING",
+      "requestType": "HelloRequestStream",
+      "responseType": "HelloReply",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SayHelloStream",
+      "streamingType": "BIDI",
+      "requestType": "HelloRequestStream",
+      "responseType": "HelloReplyStream",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SubmitSampleStream",
+      "streamingType": "SERVER_STREAMING",
+      "requestType": "EmptyRequest",
+      "responseType": "SequenceReplyStream",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream"
+    },
+    "observedCount": 1,
+    "observedSamples": [
+      {
+        "method": "SubmitSampleStream",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": null,
+        "streamingType": "SERVER_STREAMING",
+        "latencyMs": 98579,
+        "timestamp": "2025-11-04T07:38:02.052170800Z",
+        "status": "OK"
+      }
+    ]
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "SequenceStateEvent",
+      "streamingType": "UNARY",
+      "requestType": "SequenceEvent",
+      "responseType": "EmptyResponse",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent"
+    },
+    "observedCount": 7,
+    "observedSamples": [
+      {
+        "method": "SequenceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 96,
+        "timestamp": "2025-11-04T07:36:33.603898100Z",
+        "status": "OK"
+      },
+      {
+        "method": "SequenceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 16,
+        "timestamp": "2025-11-04T07:36:33.654671400Z",
+        "status": "OK"
+      },
+      {
+        "method": "SequenceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 16,
+        "timestamp": "2025-11-04T07:36:33.686807400Z",
+        "status": "OK"
+      }
+    ]
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "AcquisitionStateEvent",
+      "streamingType": "UNARY",
+      "requestType": "AcquisitionEvent",
+      "responseType": "EmptyResponse",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent"
+    },
+    "observedCount": 9,
+    "observedSamples": [
+      {
+        "method": "AcquisitionStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 11,
+        "timestamp": "2025-11-04T07:36:33.720919300Z",
+        "status": "OK"
+      },
+      {
+        "method": "AcquisitionStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 11,
+        "timestamp": "2025-11-04T07:36:33.733024100Z",
+        "status": "OK"
+      },
+      {
+        "method": "AcquisitionStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 12,
+        "timestamp": "2025-11-04T07:36:33.762800400Z",
+        "status": "OK"
+      }
+    ]
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.Opal.Acquisition",
+      "service": "Acquisition",
+      "method": "DeviceStateEvent",
+      "streamingType": "UNARY",
+      "requestType": "DeviceEvent",
+      "responseType": "EmptyResponse",
+      "protoFile": "tests/API/src/main/proto/acquisition.proto",
+      "fullyQualifiedName": "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent"
+    },
+    "observedCount": 3,
+    "observedSamples": [
+      {
+        "method": "DeviceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 15,
+        "timestamp": "2025-11-04T07:36:33.828105400Z",
+        "status": "OK"
+      },
+      {
+        "method": "DeviceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 12,
+        "timestamp": "2025-11-04T07:36:33.868017200Z",
+        "status": "OK"
+      },
+      {
+        "method": "DeviceStateEvent",
+        "service": "ThermoFisher.AcquisitionModule.Contracts.Acquisition",
+        "messages": {
+          "received": 1,
+          "sent": 1
+        },
+        "testId": "com.example.projects.poc.grpc.GrpcCallReplicationAllureGrpcTest#replicateAcquisitionLifecycleWithAllureGrpc@1762241781576",
+        "streamingType": "UNARY",
+        "latencyMs": 12,
+        "timestamp": "2025-11-04T07:36:33.881016300Z",
+        "status": "OK"
+      }
+    ]
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.AcquisitionModule.Contracts",
+      "service": "RealTimePlotService",
+      "method": "StreamSparklineData",
+      "streamingType": "BIDI",
+      "requestType": "SparklineData",
+      "responseType": "PlotDataResponse",
+      "protoFile": "tests/API/src/main/proto/rawDataAccess.proto",
+      "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.AcquisitionModule.Contracts",
+      "service": "RealTimePlotService",
+      "method": "StreamChromatogramSvgData",
+      "streamingType": "BIDI",
+      "requestType": "ChromatogramSvgData",
+      "responseType": "PlotDataResponse",
+      "protoFile": "tests/API/src/main/proto/rawDataAccess.proto",
+      "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.AcquisitionModule.Contracts",
+      "service": "RealTimePlotService",
+      "method": "UploadSparklineData",
+      "streamingType": "UNARY",
+      "requestType": "SparklineData",
+      "responseType": "PlotDataResponse",
+      "protoFile": "tests/API/src/main/proto/rawDataAccess.proto",
+      "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "ThermoFisher.AcquisitionModule.Contracts",
+      "service": "RealTimePlotService",
+      "method": "UploadChromatogramSvgData",
+      "streamingType": "UNARY",
+      "requestType": "ChromatogramSvgData",
+      "responseType": "PlotDataResponse",
+      "protoFile": "tests/API/src/main/proto/rawDataAccess.proto",
+      "fullyQualifiedName": "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  },
+  {
+    "proto": {
+      "package": "sampleonion",
+      "service": "SampleOnionService",
+      "method": "GetCompounds",
+      "streamingType": "UNARY",
+      "requestType": "GetCompoundsRequest",
+      "responseType": "GetCompoundsResponse",
+      "protoFile": "tests/API/src/main/proto/SampleOnionModule.proto",
+      "fullyQualifiedName": "sampleonion.SampleOnionService/GetCompounds"
+    },
+    "observedCount": 0,
+    "observedSamples": []
+  }
+]

@@ -1,0 +1,238 @@
+{
+  "totalRpcCount": 13,
+  "observedRpcCount": 4,
+  "uncoveredRpcCount": 9,
+  "coveragePercent": 30.77,
+  "generatedAt": "2025-11-04T08:20:18.358987Z",
+  "perRpcStatus": {
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHello": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream": {
+      "OK": 1
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent": {
+      "OK": 7
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent": {
+      "OK": 9
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent": {
+      "OK": 3
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData": {},
+    "sampleonion.SampleOnionService/GetCompounds": {}
+  },
+  "perRpcScenarios": {
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHello": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent": {},
+    "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData": {},
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData": {},
+    "sampleonion.SampleOnionService/GetCompounds": {}
+  },
+  "perRpcPayloadValid": {
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHello": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 1
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 7
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 9
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 3
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    },
+    "sampleonion.SampleOnionService/GetCompounds": {
+      "valid": 0,
+      "invalid": 0,
+      "unknown": 0
+    }
+  },
+  "perRpcLatency": {
+    "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream": {
+      "count": 1,
+      "p50": 98579.0,
+      "p90": 98579.0,
+      "p99": 98579.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent": {
+      "count": 7,
+      "p50": 15.0,
+      "p90": 48.00000000000003,
+      "p99": 91.19999999999996
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent": {
+      "count": 9,
+      "p50": 11.0,
+      "p90": 18.6,
+      "p99": 24.36
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent": {
+      "count": 3,
+      "p50": 12.0,
+      "p90": 14.399999999999999,
+      "p99": 14.94
+    }
+  },
+  "statusCoverage": {
+    "expectedStatuses": [
+      "INTERNAL",
+      "INVALID_ARGUMENT",
+      "OK",
+      "UNAUTHENTICATED"
+    ],
+    "observedStatuses": [
+      "OK"
+    ],
+    "percent": 25.0
+  },
+  "perRpcStatusCoverage": {
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHello": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream": {
+      "expectedCount": 4,
+      "observedMatchedCount": 1,
+      "observedMatched": [
+        "OK"
+      ],
+      "percent": 25.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent": {
+      "expectedCount": 4,
+      "observedMatchedCount": 1,
+      "observedMatched": [
+        "OK"
+      ],
+      "percent": 25.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent": {
+      "expectedCount": 4,
+      "observedMatchedCount": 1,
+      "observedMatched": [
+        "OK"
+      ],
+      "percent": 25.0
+    },
+    "ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent": {
+      "expectedCount": 4,
+      "observedMatchedCount": 1,
+      "observedMatched": [
+        "OK"
+      ],
+      "percent": 25.0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    },
+    "sampleonion.SampleOnionService/GetCompounds": {
+      "expectedCount": 4,
+      "observedMatchedCount": 0,
+      "observedMatched": [],
+      "percent": 0.0
+    }
+  }
+}

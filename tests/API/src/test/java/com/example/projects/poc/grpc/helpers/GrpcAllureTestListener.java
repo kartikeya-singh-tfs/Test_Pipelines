@@ -4,6 +4,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import io.qameta.allure.Allure;
+import com.example.projects.poc.grpc.helpers.ObservabilityClientInterceptor;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -29,24 +30,29 @@ public class GrpcAllureTestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         String id = buildTestId(result);
         TestContext.setCurrentTestId(id);
+        // also inform Observability interceptor so it stamps records with the same id
+        ObservabilityClientInterceptor.setCurrentTestId(id);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         drainAndAttach(result);
         TestContext.clear();
+        ObservabilityClientInterceptor.clearCurrentTestId();
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         drainAndAttach(result);
         TestContext.clear();
+        ObservabilityClientInterceptor.clearCurrentTestId();
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         drainAndAttach(result);
         TestContext.clear();
+        ObservabilityClientInterceptor.clearCurrentTestId();
     }
 
     @Override

@@ -1,8 +1,6 @@
-package com.example.projects.poc.grpc;
+package com.example.projects.poc.grpc.Scenarios;
 
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.ClientInterceptors;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.sse.EventSource;
@@ -19,7 +17,6 @@ import ThermoFisher.AcquisitionModule.Contracts.AcquisitionOuterClass;
 
 // Allure imports for detailed reporting
 import io.qameta.allure.*;
-import io.qameta.allure.grpc.AllureGrpc;
 
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -58,11 +55,8 @@ public class GrpcCallReplicationAllureGrpcTest
 
 
 
-        ManagedChannel rawChannel = ManagedChannelBuilder.forAddress("localhost", 51640)
-                .usePlaintext()
-                .build();
-
-       io.grpc.Channel interceptedChannel = ClientInterceptors.intercept(rawChannel, new AllureGrpc());
+    // Use shared helper to create a channel already wrapped with Allure and Observability
+    ManagedChannel interceptedChannel = CommonUtilities.createGrpcChannel("localhost", 51640);
 
 
 
@@ -115,7 +109,7 @@ public class GrpcCallReplicationAllureGrpcTest
             Allure.step("No streaming responses received; skipping streaming summary attachment");
         }
 
-        rawChannel.shutdown();
+    interceptedChannel.shutdown();
         minimumEventsLatch.await(5, TimeUnit.SECONDS);
         eventSource.cancel();
 

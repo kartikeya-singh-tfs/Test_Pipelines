@@ -6,6 +6,7 @@ C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcAllureHelper.java
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcAllureTestListener.java
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\GrpcClientAllureInterceptor.java
+C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\ObservabilityClientInterceptor.java
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\SseEventListener.java
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\helpers\TestContext.java
 C:\Git\Pipeline_Github_Actions\tests\API\src\test\java\com\example\projects\poc\grpc\MockAcquisitionServiceTest.java

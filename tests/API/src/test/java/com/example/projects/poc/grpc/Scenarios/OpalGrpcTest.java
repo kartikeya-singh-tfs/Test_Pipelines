@@ -1,4 +1,4 @@
-package com.example.projects.poc.grpc;
+package com.example.projects.poc.grpc.Scenarios;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

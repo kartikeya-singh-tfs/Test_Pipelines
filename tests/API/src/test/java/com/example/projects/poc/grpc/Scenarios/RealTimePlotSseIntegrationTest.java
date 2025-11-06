@@ -1,4 +1,4 @@
-package com.example.projects.poc.grpc;
+package com.example.projects.poc.grpc.Scenarios;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;

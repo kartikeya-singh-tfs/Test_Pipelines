@@ -239,9 +239,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
+                    <argLine>${argLine} -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -250,6 +248,32 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <!-- JaCoCo for Java code coverage reports -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.10</version>
+                <executions>
+                    <!-- inject agent for surefire test runs -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- generate report after tests (bound to verify phase) -->
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!-- Removed duplicate Allure TestNG dependency -->
         </plugins>

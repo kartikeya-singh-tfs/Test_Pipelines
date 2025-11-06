@@ -22,6 +22,12 @@ import java.util.concurrent.TimeUnit;
 // Generated classes from acquisition.proto
 import ThermoFisher.AcquisitionModule.Contracts.AcquisitionGrpc;
 import ThermoFisher.AcquisitionModule.Contracts.AcquisitionOuterClass;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.ClientInterceptor;
+import io.grpc.ClientInterceptors;
+import io.qameta.allure.grpc.AllureGrpc;
+import com.example.projects.poc.grpc.helpers.ObservabilityClientInterceptor;
 
 /**
  * Small collection of test utilities.
@@ -237,5 +243,54 @@ public final class CommonUtilities {
         Allure.step("📊 Stream started (listening) - awaiting responses asynchronously");
 
         return streamResponses;
+    }
+
+    /**
+     * Create a plaintext ManagedChannel to the given host and port.
+     * This is a convenience for tests that run servers locally.
+     * Note: this creates an insecure (plaintext) channel. For TLS-enabled servers
+     * use a different builder or provide SslContext wiring.
+     */
+    public static ManagedChannel createChannel(String host, int port) {
+        return ManagedChannelBuilder.forAddress(host, port)
+                .usePlaintext()
+                .build();
+    }
+
+    /**
+     * Convenience: create a plaintext channel to localhost on the given port.
+     */
+    public static ManagedChannel createChannelForPort(int port) {
+        return createChannel("localhost", port);
+    }
+
+    /**
+     * Wrap an existing ManagedChannel with the provided client interceptors and return
+     * an intercepted Channel instance suitable for creating stubs that will have the
+     * interceptors applied.
+     * If no interceptors are provided the original channel is returned as-is.
+     */
+    public static io.grpc.Channel createInterceptedChannel(ManagedChannel baseChannel, ClientInterceptor... interceptors) {
+        if (interceptors == null || interceptors.length == 0) return baseChannel;
+        return ClientInterceptors.intercept(baseChannel, interceptors);
+    }
+
+        /**
+     * Wrap an existing ManagedChannel with the provided client interceptors and return
+     * an intercepted Channel instance suitable for creating stubs that will have the
+     * interceptors applied.
+     * If no interceptors are provided the original channel is returned as-is.
+     */
+    public static ManagedChannel createGrpcChannel(String host, int port) {
+        // Build a ManagedChannel that has interceptors applied so callers may
+        // still shutdown the channel cleanly. Using the builder.intercept(...) API
+        // preserves ManagedChannel semantics while applying client interceptors.
+        ClientInterceptor allure = new AllureGrpc();
+        ClientInterceptor observ = new ObservabilityClientInterceptor();
+
+        return ManagedChannelBuilder.forAddress(host, port)
+                .usePlaintext()
+                .intercept(allure, observ)
+                .build();
     }
 }

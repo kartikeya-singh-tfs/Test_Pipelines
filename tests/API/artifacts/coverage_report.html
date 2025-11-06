@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>gRPC Coverage Report</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f2f2f2; text-align: left; }
+    tr:hover { background: #f9f9f9; }
+    .badge { display:inline-block; padding:4px 8px; border-radius:4px; background:#eee; margin-right:8px; }
+    .fail { background:#fdd; color:#900; }
+    .pass { background:#dfd; color:#070; }
+  </style>
+</head>
+<body>
+  <h1>gRPC Coverage Report</h1>
+  <p>Generated: 2025-11-04T08:20:18.358987Z</p>
+    <p>
+        <span class="badge">Total RPCs: 13</span>
+        <span class="badge">Observed RPCs: 4</span>
+        <span class="badge">Uncovered RPCs: 9</span>
+        <span class="badge">Coverage: 30.77%</span>
+    </p>
+    <div><h2>Status-code coverage</h2><p>Expected statuses: INTERNAL, INVALID_ARGUMENT, OK, UNAUTHENTICATED &nbsp; Observed: OK &nbsp; Coverage: 25.0%</p></div>
+  <h2>Uncovered RPCs</h2>
+  <ul>
+    <li>ThermoFisher.Opal.Acquisition.Acquisition/SayHello</li>
+    <li>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream</li>
+    <li>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream</li>
+    <li>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream</li>
+    <li>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData</li>
+    <li>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData</li>
+    <li>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData</li>
+    <li>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData</li>
+    <li>sampleonion.SampleOnionService/GetCompounds</li>
+
+  </ul>
+
+    <h2>All RPCs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Package</th>
+                <th>Service</th>
+                <th>Method</th>
+                <th>FQName</th>
+                <th>ObservedCount</th>
+                <th>Status coverage</th>
+                <th>Scenarios</th>
+                <th>Payload valid</th>
+                <th>Latency summary</th>
+            </tr>
+        </thead>
+        <tbody>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SayHello</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SayHello</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SayHelloServerStream</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloServerStream</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SayHelloClientStream</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloClientStream</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SayHelloStream</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SayHelloStream</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SubmitSampleStream</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SubmitSampleStream</td><td>1</td><td>expected: 4<br/>observed: 1<br/>percent: 25.0%<br/>codes: OK</td><td></td><td>unknown: 1</td><td>count: 1<br/>p50: 98579.0 ms<br/>p90: 98579.0 ms<br/>p99: 98579.0 ms</td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>SequenceStateEvent</td><td>ThermoFisher.Opal.Acquisition.Acquisition/SequenceStateEvent</td><td>7</td><td>expected: 4<br/>observed: 1<br/>percent: 25.0%<br/>codes: OK</td><td></td><td>unknown: 7</td><td>count: 7<br/>p50: 15.0 ms<br/>p90: 48.00000000000003 ms<br/>p99: 91.19999999999996 ms</td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>AcquisitionStateEvent</td><td>ThermoFisher.Opal.Acquisition.Acquisition/AcquisitionStateEvent</td><td>9</td><td>expected: 4<br/>observed: 1<br/>percent: 25.0%<br/>codes: OK</td><td></td><td>unknown: 9</td><td>count: 9<br/>p50: 11.0 ms<br/>p90: 18.6 ms<br/>p99: 24.36 ms</td></tr>
+<tr><td>ThermoFisher.Opal.Acquisition</td><td>Acquisition</td><td>DeviceStateEvent</td><td>ThermoFisher.Opal.Acquisition.Acquisition/DeviceStateEvent</td><td>3</td><td>expected: 4<br/>observed: 1<br/>percent: 25.0%<br/>codes: OK</td><td></td><td>unknown: 3</td><td>count: 3<br/>p50: 12.0 ms<br/>p90: 14.399999999999999 ms<br/>p99: 14.94 ms</td></tr>
+<tr><td>ThermoFisher.AcquisitionModule.Contracts</td><td>RealTimePlotService</td><td>StreamSparklineData</td><td>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamSparklineData</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.AcquisitionModule.Contracts</td><td>RealTimePlotService</td><td>StreamChromatogramSvgData</td><td>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/StreamChromatogramSvgData</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.AcquisitionModule.Contracts</td><td>RealTimePlotService</td><td>UploadSparklineData</td><td>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadSparklineData</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>ThermoFisher.AcquisitionModule.Contracts</td><td>RealTimePlotService</td><td>UploadChromatogramSvgData</td><td>ThermoFisher.AcquisitionModule.Contracts.RealTimePlotService/UploadChromatogramSvgData</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+<tr><td>sampleonion</td><td>SampleOnionService</td><td>GetCompounds</td><td>sampleonion.SampleOnionService/GetCompounds</td><td>0</td><td>expected: 4<br/>observed: 0<br/>percent: 0.0%</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <p>Download artifacts: <a href="./coverage_summary.json">coverage_summary.json</a> | <a href="./uncovered_rpcs.json">uncovered_rpcs.json</a> | <a href="./joined_calls.json">joined_calls.json</a></p>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.projects.poc.grpc;
+package com.example.projects.poc.grpc.Scenarios;
 
 import java.io.StringWriter;
 import java.io.PrintWriter;
